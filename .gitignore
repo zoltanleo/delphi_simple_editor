@@ -3,3 +3,7 @@
 
 # Ada Library Information
 *.ali
+/__history
+/Win32
+/Project1.delphilsp.json
+/Project1.dproj.local
