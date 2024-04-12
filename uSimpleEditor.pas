@@ -162,9 +162,50 @@ type
     ToolButton48: TToolButton;
     ToolButton49: TToolButton;
     r_edt: TRichEdit;
+    ColorDlg: TColorDialog;
+    FontDlg: TFontDialog;
+    PrnDlg: TPrintDialog;
+    FileOpenDlg: TOpenDialog;
+    FileSaveDlg: TSaveDialog;
+    PgStpDlg: TPageSetupDialog;
+    FindDlg: TFindDialog;
+    ReplaceDlg: TReplaceDialog;
     procedure ActFileNewExecute(Sender: TObject);
     procedure ActToLowerCaseExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ActFileOpenExecute(Sender: TObject);
+    procedure ActSaveAsExecute(Sender: TObject);
+    procedure ActPgStpExecute(Sender: TObject);
+    procedure ActPrintExecute(Sender: TObject);
+    procedure ActCloseFileWSaveExecute(Sender: TObject);
+    procedure ActCloseFileWOSaveExecute(Sender: TObject);
+    procedure ActCutToClipbrdExecute(Sender: TObject);
+    procedure ActCopyToClipbrdExecute(Sender: TObject);
+    procedure ActPasteToClipbrdExecute(Sender: TObject);
+    procedure ActSelectAllExecute(Sender: TObject);
+    procedure ActSearchTextExecute(Sender: TObject);
+    procedure ActReplaceTextExecute(Sender: TObject);
+    procedure ActFontColorExecute(Sender: TObject);
+    procedure ActFontBackgrndExecute(Sender: TObject);
+    procedure ActFontForegrndExecute(Sender: TObject);
+    procedure ActFontSizeIncExecute(Sender: TObject);
+    procedure ActFontSizeDecExecute(Sender: TObject);
+    procedure ActToUpperCaseExecute(Sender: TObject);
+    procedure actFontBoldExecute(Sender: TObject);
+    procedure actFontItalicExecute(Sender: TObject);
+    procedure actFontUnderlineExecute(Sender: TObject);
+    procedure actFontStrikeOutExecute(Sender: TObject);
+    procedure actInsertBulletsExecute(Sender: TObject);
+    procedure ActInsertSymbolExecute(Sender: TObject);
+    procedure ActChrSubScriptExecute(Sender: TObject);
+    procedure ActChrSupraScriptExecute(Sender: TObject);
+    procedure ActDivStringExecute(Sender: TObject);
+    procedure actAlignLeftExecute(Sender: TObject);
+    procedure actAlignCenterExecute(Sender: TObject);
+    procedure actAlignRightExecute(Sender: TObject);
+    procedure actLineSpacing_1Execute(Sender: TObject);
+    procedure actLineSpacing_2Execute(Sender: TObject);
+    procedure actLineSpacing_3Execute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -178,7 +219,167 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmSimpleEditor.actAlignCenterExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actAlignLeftExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actAlignRightExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActChrSubScriptExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActChrSupraScriptExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActCloseFileWOSaveExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActCloseFileWSaveExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActCopyToClipbrdExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActCutToClipbrdExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActDivStringExecute(Sender: TObject);
+begin
+//
+end;
+
 procedure TfrmSimpleEditor.ActFileNewExecute(Sender: TObject);
+begin
+  r_edt.Text:= 'Привет, Камиль!';
+end;
+
+procedure TfrmSimpleEditor.ActFileOpenExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActFontBackgrndExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actFontBoldExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActFontColorExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActFontForegrndExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actFontItalicExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActFontSizeDecExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActFontSizeIncExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actFontStrikeOutExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actFontUnderlineExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actInsertBulletsExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActInsertSymbolExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actLineSpacing_1Execute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actLineSpacing_2Execute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.actLineSpacing_3Execute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActPasteToClipbrdExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActPgStpExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActPrintExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActReplaceTextExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActSaveAsExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActSearchTextExecute(Sender: TObject);
+begin
+//
+end;
+
+procedure TfrmSimpleEditor.ActSelectAllExecute(Sender: TObject);
 begin
 //
 end;
@@ -188,11 +389,17 @@ begin
 //
 end;
 
+procedure TfrmSimpleEditor.ActToUpperCaseExecute(Sender: TObject);
+begin
+//
+end;
+
 procedure TfrmSimpleEditor.FormCreate(Sender: TObject);
 var
   i: Integer;
   tmpTB: TToolBar;
 begin
+  Self.ModalResult:= mrCancel;
   cbbFontFamily.Height:= 20;
   cbbFontSize.Height:= 20;
 

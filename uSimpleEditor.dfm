@@ -63,6 +63,7 @@ object frmSimpleEditor: TfrmSimpleEditor
     Images = PngImgListActMng
     ParentShowHint = False
     ShowHint = True
+    ExplicitWidth = 620
     object tbFile: TToolBar
       Left = 11
       Top = 0
@@ -455,8 +456,7 @@ object frmSimpleEditor: TfrmSimpleEditor
     ScrollBars = ssBoth
     TabOrder = 2
     ExplicitLeft = 3
-    ExplicitTop = 190
-    ExplicitHeight = 221
+    ExplicitTop = 167
   end
   object PngImgListActMng: TPngImageList
     PngImages = <
@@ -1451,60 +1451,70 @@ object frmSimpleEditor: TfrmSimpleEditor
       Caption = #1054#1090#1082#1088#1099#1090#1100
       Hint = #1054#1090#1082#1088#1099#1090#1100' '#1089#1091#1097#1077#1089#1090#1074#1091#1102#1097#1080#1081' '#1092#1072#1081#1083
       ImageIndex = 1
+      OnExecute = ActFileOpenExecute
     end
     object ActSaveAs: TAction
       Category = 'File'
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1082#1072#1082' ...'
       Hint = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1077#1082#1089#1090' '#1074' '#1092#1072#1081#1083
       ImageIndex = 3
+      OnExecute = ActSaveAsExecute
     end
     object ActPgStp: TAction
       Category = 'File'
       Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1089#1090#1088#1072#1085#1080#1094#1099
       Hint = #1053#1072#1089#1090#1088#1086#1081#1082#1072' '#1087#1072#1088#1072#1084#1077#1090#1088#1086#1074' '#1089#1090#1088#1072#1085#1080#1094#1099
       ImageIndex = 6
+      OnExecute = ActPgStpExecute
     end
     object ActPrint: TAction
       Category = 'File'
       Caption = #1055#1077#1095#1072#1090#1100
       Hint = #1055#1077#1095#1072#1090#1100' '#1090#1077#1082#1089#1090#1072
       ImageIndex = 8
+      OnExecute = ActPrintExecute
     end
     object ActCloseFileWSave: TAction
       Category = 'File'
       Caption = #1042#1099#1081#1090#1080' '#1089' '#1089#1086#1093#1088#1072#1085#1077#1085#1080#1077#1084' ...'
       Hint = #1042#1099#1081#1090#1080' '#1089' '#1089#1086#1093#1088#1072#1085#1077#1085#1080#1077#1084' '#1080#1079#1084#1077#1085#1077#1085#1080#1081' '#1090#1077#1082#1089#1090#1072
       ImageIndex = 4
+      OnExecute = ActCloseFileWSaveExecute
     end
     object ActCloseFileWOSave: TAction
       Category = 'File'
       Caption = #1042#1099#1081#1090#1080' '#1073#1077#1079' '#1089#1086#1093#1088#1072#1085#1077#1085#1080#1103' ...'
       Hint = #1042#1099#1081#1090#1080' '#1073#1077#1079' '#1089#1086#1093#1088#1072#1085#1077#1085#1080#1103' '#1080#1079#1084#1077#1085#1077#1085#1080#1081' '#1090#1077#1082#1089#1090#1072
       ImageIndex = 5
+      OnExecute = ActCloseFileWOSaveExecute
     end
     object ActCutToClipbrd: TAction
       Category = 'Edit'
       Caption = #1042#1099#1088#1077#1079#1072#1090#1100
       Hint = #1042#1099#1088#1077#1079#1072#1090#1100' '#1089' '#1082#1086#1087#1080#1088#1086#1074#1072#1085#1080#1077#1084' '#1074' '#1073#1091#1092#1077#1088' '#1086#1073#1084#1077#1085#1072
       ImageIndex = 13
+      OnExecute = ActCutToClipbrdExecute
     end
     object ActCopyToClipbrd: TAction
       Category = 'Edit'
       Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100
       Hint = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1074' '#1073#1091#1092#1077#1088' '#1086#1073#1084#1077#1085#1072
       ImageIndex = 14
+      OnExecute = ActCopyToClipbrdExecute
     end
     object ActPasteToClipbrd: TAction
       Category = 'Edit'
       Caption = #1042#1089#1090#1072#1074#1080#1090#1100
       Hint = #1042#1089#1090#1072#1074#1080#1090#1100' '#1080#1079' '#1073#1091#1092#1077#1088#1072' '#1086#1073#1084#1077#1085#1072
       ImageIndex = 15
+      OnExecute = ActPasteToClipbrdExecute
     end
     object ActSelectAll: TAction
       Category = 'Edit'
       Caption = #1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077' ...'
       Hint = #1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1077#1089#1100' '#1090#1077#1082#1089#1090' '#1074' '#1086#1082#1085#1077
       ImageIndex = 15
+      OnExecute = ActSelectAllExecute
     end
     object ActUndo: TAction
       Category = 'Edit'
@@ -1525,12 +1535,14 @@ object frmSimpleEditor: TfrmSimpleEditor
       Caption = #1055#1086#1080#1089#1082
       Hint = #1053#1072#1081#1090#1080' '#1074' '#1090#1077#1082#1089#1090#1077
       ImageIndex = 9
+      OnExecute = ActSearchTextExecute
     end
     object ActReplaceText: TAction
       Category = 'Edit'
       Caption = #1053#1072#1081#1090#1080' '#1089' '#1079#1072#1084#1077#1085#1086#1081
       Hint = #1053#1072#1081#1090#1080' '#1080' '#1079#1072#1084#1077#1085#1080#1090#1100' '#1074' '#1090#1077#1082#1089#1090#1077
       ImageIndex = 10
+      OnExecute = ActReplaceTextExecute
     end
     object ActFontChoice: TAction
       Category = 'Font'
@@ -1543,36 +1555,42 @@ object frmSimpleEditor: TfrmSimpleEditor
       Caption = #1062#1074#1077#1090' '#1096#1088#1080#1092#1090#1072
       Hint = #1042#1099#1073#1088#1072#1090#1100' '#1094#1074#1077#1090' '#1096#1088#1080#1092#1090#1072
       ImageIndex = 26
+      OnExecute = ActFontColorExecute
     end
     object ActFontBackgrnd: TAction
       Category = 'Font'
       Caption = #1060#1086#1085' '#1096#1088#1080#1092#1090#1072
       Hint = #1042#1099#1073#1088#1072#1090#1100' '#1092#1086#1085' '#1089#1090#1088#1086#1082#1080
       ImageIndex = 27
+      OnExecute = ActFontBackgrndExecute
     end
     object ActFontForegrnd: TAction
       Category = 'Font'
       Caption = #1055#1086#1076#1089#1074#1077#1090#1082#1072' '#1096#1088#1080#1092#1090#1072
       Hint = #1052#1072#1088#1082#1080#1088#1086#1074#1072#1090#1100' '#1074#1099#1076#1077#1083#1077#1085#1085#1099#1081' '#1090#1077#1082#1089#1090
       ImageIndex = 25
+      OnExecute = ActFontForegrndExecute
     end
     object ActFontSizeInc: TAction
       Category = 'Font'
       Caption = #1059#1074#1077#1083#1080#1095#1080#1090#1100' '#1074#1099#1076#1077#1083#1077#1085#1085#1099#1081' '#1096#1088#1080#1092#1090
       Hint = #1059#1074#1077#1083#1080#1095#1080#1090#1100' '#1088#1072#1079#1084#1077#1088' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1075#1086' '#1096#1088#1080#1092#1090#1072
       ImageIndex = 34
+      OnExecute = ActFontSizeIncExecute
     end
     object ActFontSizeDec: TAction
       Category = 'Font'
       Caption = #1059#1084#1077#1085#1100#1096#1080#1090#1100' '#1074#1099#1076#1077#1083#1077#1085#1085#1099#1081' '#1096#1088#1080#1092#1090
       Hint = #1059#1084#1077#1085#1100#1096#1080#1090#1100' '#1088#1072#1079#1084#1077#1088' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1075#1086' '#1096#1088#1080#1092#1090#1072
       ImageIndex = 33
+      OnExecute = ActFontSizeDecExecute
     end
     object ActToUpperCase: TAction
       Category = 'Font'
       Caption = #1042#1089#1077' '#1087#1088#1086#1087#1080#1089#1085#1099#1077
       Hint = #1042#1089#1077' '#1073#1091#1082#1074#1099' '#1074' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1084' '#1092#1088#1072#1075#1084#1077#1085#1090#1077' '#1089#1076#1077#1083#1072#1090#1100' '#1055#1056#1054#1055#1048#1057#1053#1067#1052#1048
       ImageIndex = 36
+      OnExecute = ActToUpperCaseExecute
     end
     object ActToLowerCase: TAction
       Category = 'Font'
@@ -1586,87 +1604,102 @@ object frmSimpleEditor: TfrmSimpleEditor
       Caption = #1046#1080#1088#1085#1099#1081' '
       Hint = #1046#1080#1088#1085#1099#1081' '#1096#1088#1080#1092#1090
       ImageIndex = 20
+      OnExecute = actFontBoldExecute
     end
     object actFontItalic: TAction
       Category = 'Format'
       Caption = #1053#1072#1082#1083#1086#1085#1085#1099#1081
       Hint = #1053#1072#1082#1083#1086#1085#1085#1099#1081' '#1096#1088#1080#1092#1090
       ImageIndex = 21
+      OnExecute = actFontItalicExecute
     end
     object actFontUnderline: TAction
       Category = 'Format'
       Caption = #1055#1086#1076#1095#1077#1088#1082#1085#1091#1090#1099#1081
       Hint = #1055#1086#1076#1095#1077#1088#1082#1085#1091#1090#1099#1081' '#1096#1088#1080#1092#1090
       ImageIndex = 23
+      OnExecute = actFontUnderlineExecute
     end
     object actFontStrikeOut: TAction
       Category = 'Format'
       Caption = #1047#1072#1095#1077#1088#1082#1085#1091#1090#1099#1081
       Hint = #1047#1072#1095#1077#1088#1082#1085#1091#1090#1099#1081' '#1096#1088#1080#1092#1090
       ImageIndex = 22
+      OnExecute = actFontStrikeOutExecute
     end
     object actInsertBullets: TAction
       Category = 'Format'
       Caption = #1042#1089#1090#1072#1074#1080#1090#1100' '#1084#1072#1088#1082#1077#1088
       Hint = #1042#1089#1090#1072#1074#1082#1072' '#1084#1072#1088#1082#1077#1088#1072' '#1074' '#1090#1077#1082#1091#1097#1091#1102' '#1087#1086#1079#1080#1094#1080#1102
       ImageIndex = 30
+      OnExecute = actInsertBulletsExecute
     end
     object ActInsertSymbol: TAction
       Category = 'Format'
       Caption = #1042#1089#1090#1072#1074#1080#1090#1100' '#1089#1080#1084#1074#1086#1083
       Hint = #1042#1089#1090#1072#1074#1080#1090#1100' '#1089#1087#1077#1094#1080#1072#1083#1100#1085#1099#1081' '#1089#1080#1084#1074#1086#1083
       ImageIndex = 31
+      OnExecute = ActInsertSymbolExecute
     end
     object ActChrSubScript: TAction
       Category = 'Format'
       Caption = #1053#1080#1078#1085#1080#1081' '#1088#1077#1075#1080#1089#1090#1088
       Hint = #1055#1077#1088#1077#1074#1086#1076' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1075#1086' '#1090#1077#1082#1089#1090#1072' '#1074' '#1085#1080#1078#1085#1080#1081' ('#1087#1086#1076#1089#1090#1088#1086#1095#1085#1099#1081') '#1088#1077#1075#1080#1089#1090#1088
       ImageIndex = 78
+      OnExecute = ActChrSubScriptExecute
     end
     object ActChrSupraScript: TAction
       Category = 'Format'
       Caption = #1042#1077#1088#1093#1085#1080#1081' '#1088#1077#1075#1080#1089#1090#1088
       Hint = #1055#1077#1088#1077#1074#1086#1076' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1075#1086' '#1090#1077#1082#1089#1090#1072' '#1074' '#1074#1077#1088#1093#1085#1080#1081' ('#1085#1072#1076#1089#1090#1088#1086#1095#1085#1099#1081') '#1088#1077#1075#1080#1089#1090#1088
       ImageIndex = 79
+      OnExecute = ActChrSupraScriptExecute
     end
     object ActDivString: TAction
       Category = 'Format'
       Caption = #1055#1077#1088#1077#1085#1086#1089' '#1089#1090#1088#1086#1082
       Hint = #1059#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080#1084' '#1087#1077#1088#1077#1085#1086#1089#1086#1084' '#1089#1090#1088#1086#1082
       ImageIndex = 48
+      OnExecute = ActDivStringExecute
     end
     object actAlignLeft: TAction
       Category = 'Format'
       Caption = #1042#1099#1088#1072#1074#1085#1080#1074#1072#1085#1080#1077' '#1089#1083#1077#1074#1072
       Hint = #1042#1099#1088#1072#1074#1085#1080#1074#1072#1085#1080#1077' '#1090#1077#1082#1089#1090#1072' '#1087#1086' '#1083#1077#1074#1086#1084#1091' '#1082#1088#1072#1102
       ImageIndex = 16
+      OnExecute = actAlignLeftExecute
     end
     object actAlignCenter: TAction
       Category = 'Format'
       Caption = #1042#1099#1088#1072#1074#1085#1080#1074#1072#1085#1080#1077' '#1087#1086' '#1094#1077#1085#1090#1088#1091
       Hint = #1042#1099#1088#1072#1074#1085#1080#1074#1072#1085#1080#1077' '#1090#1077#1082#1089#1090#1072' '#1087#1086' '#1094#1077#1085#1090#1088#1091
       ImageIndex = 17
+      OnExecute = actAlignCenterExecute
     end
     object actAlignRight: TAction
       Category = 'Format'
       Caption = #1042#1099#1088#1072#1074#1085#1080#1074#1072#1085#1080#1077' '#1089#1087#1088#1072#1074#1072
       Hint = #1042#1099#1088#1072#1074#1085#1080#1074#1072#1085#1080#1077' '#1090#1077#1082#1089#1090#1072' '#1087#1086' '#1087#1088#1072#1074#1086#1084#1091' '#1082#1088#1072#1102
       ImageIndex = 18
+      OnExecute = actAlignRightExecute
     end
     object actLineSpacing_1: TAction
       Category = 'Format'
       Caption = #1054#1076#1080#1085#1072#1088#1085#1099#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
       ImageIndex = 64
+      OnExecute = actLineSpacing_1Execute
     end
     object actLineSpacing_2: TAction
       Category = 'Format'
       Caption = #1044#1074#1086#1081#1085#1086#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
       ImageIndex = 65
+      OnExecute = actLineSpacing_2Execute
     end
     object actLineSpacing_3: TAction
       Category = 'Format'
       Caption = #1058#1088#1086#1081#1085#1086#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
       ImageIndex = 66
+      OnExecute = actLineSpacing_3Execute
     end
   end
   object mnuMain: TMainMenu
@@ -1834,5 +1867,65 @@ object frmSimpleEditor: TfrmSimpleEditor
         Action = actAlignRight
       end
     end
+  end
+  object ColorDlg: TColorDialog
+    Left = 72
+    Top = 216
+  end
+  object FontDlg: TFontDialog
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [fdAnsiOnly, fdEffects]
+    Left = 136
+    Top = 216
+  end
+  object PrnDlg: TPrintDialog
+    Left = 208
+    Top = 216
+  end
+  object FileOpenDlg: TOpenDialog
+    Filter = 
+      #1055#1088#1086#1089#1090#1086#1081' '#1090#1077#1082#1089#1090' (*.txt)|*.txt|'#1058#1077#1082#1089#1090' '#1089' '#1092#1086#1088#1084#1072#1090#1080#1088#1086#1074#1072#1085#1080#1077#1084' (*.rtf)|*.rt' +
+      'f'
+    FilterIndex = 2
+    Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
+    Title = #1054#1090#1082#1088#1099#1090#1100' '#1092#1072#1081#1083
+    Left = 280
+    Top = 216
+  end
+  object FileSaveDlg: TSaveDialog
+    Filter = 
+      #1055#1088#1086#1089#1090#1086#1081' '#1090#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' (*.txt)|*.txt|'#1058#1077#1082#1089#1090' '#1089' '#1092#1086#1088#1084#1072#1090#1080#1088#1086#1074#1072#1085#1080#1077#1084' (*.' +
+      'rtf)|*.rtf'
+    FilterIndex = 2
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Title = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' '
+    Left = 368
+    Top = 216
+  end
+  object PgStpDlg: TPageSetupDialog
+    MinMarginLeft = 0
+    MinMarginTop = 0
+    MinMarginRight = 0
+    MinMarginBottom = 0
+    MarginLeft = 2500
+    MarginTop = 2500
+    MarginRight = 2500
+    MarginBottom = 2500
+    PageWidth = 14800
+    PageHeight = 21000
+    Left = 464
+    Top = 216
+  end
+  object FindDlg: TFindDialog
+    Left = 424
+    Top = 280
+  end
+  object ReplaceDlg: TReplaceDialog
+    Left = 336
+    Top = 280
   end
 end

@@ -1953,8 +1953,8 @@ object FrmSimpleEditor: TFrmSimpleEditor
     FilterIndex = 2
     Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
     Title = #1054#1090#1082#1088#1099#1090#1100' '#1092#1072#1081#1083
-    Left = 264
-    Top = 176
+    Left = 304
+    Top = 288
   end
   object FileSaveDlg: TSaveDialog
     Filter = 
@@ -1963,8 +1963,8 @@ object FrmSimpleEditor: TFrmSimpleEditor
     FilterIndex = 2
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Title = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1077#1082#1089#1090#1086#1074#1099#1081' '#1092#1072#1081#1083' '
-    Left = 392
-    Top = 176
+    Left = 368
+    Top = 288
   end
   object FontDlg: TFontDialog
     Font.Charset = DEFAULT_CHARSET
@@ -1973,20 +1973,20 @@ object FrmSimpleEditor: TFrmSimpleEditor
     Font.Name = 'Tahoma'
     Font.Style = []
     Options = [fdAnsiOnly, fdEffects]
-    Left = 392
-    Top = 112
+    Left = 176
+    Top = 288
   end
   object ColorDlg: TColorDialog
-    Left = 200
-    Top = 104
+    Left = 96
+    Top = 288
   end
   object PrnDlg: TPrintDialog
-    Left = 456
-    Top = 112
+    Left = 248
+    Top = 288
   end
   object FindDlg: TFindDialog
     OnFind = FindDlgFind
-    Left = 328
+    Left = 336
     Top = 112
   end
   object PgStpDlg: TPageSetupDialog
@@ -2000,14 +2000,14 @@ object FrmSimpleEditor: TFrmSimpleEditor
     MarginBottom = 2500
     PageWidth = 14800
     PageHeight = 21000
-    Left = 488
-    Top = 184
+    Left = 472
+    Top = 296
   end
   object ReplaceDlg: TReplaceDialog
     OnClose = ReplaceDlgClose
     OnFind = ReplaceDlgFind
     OnReplace = ReplaceDlgReplace
     Left = 272
-    Top = 112
+    Top = 104
   end
 end

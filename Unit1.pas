@@ -34,9 +34,10 @@ uses uSimpleEditor;
 procedure TForm1.Button1Click(Sender: TObject);
 var
   tmpFrm: TFrmSimpleEditor;
-
+  ms: TMemoryStream;
 begin
   tmpFrm:= TFrmSimpleEditor.Create(Self);
+  ms:= TMemoryStream.Create;
   try
      tmpFrm.ShowModal;
 
@@ -46,6 +47,7 @@ begin
      end;
 
   finally
+    ms.Free;
     FreeAndNil(tmpFrm);
   end;
 end;
