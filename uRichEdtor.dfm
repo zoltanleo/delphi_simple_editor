@@ -55,7 +55,7 @@ object FrmSimpleEditor: TFrmSimpleEditor
     object RichEdtSimple: TRichEdit
       Left = 7
       Top = 6
-      Width = 651
+      Width = 647
       Height = 337
       Anchors = [akLeft, akTop, akRight, akBottom]
       Font.Charset = RUSSIAN_CHARSET

@@ -3,7 +3,8 @@
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows
+  , Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls;
 
 type
@@ -28,7 +29,7 @@ implementation
 
 {$R *.dfm}
 
-uses uRichEdtor;
+uses uSimpleEditor;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -37,12 +38,11 @@ var
 begin
   tmpFrm:= TFrmSimpleEditor.Create(Self);
   try
-     tmpFrm.RichEdtSimple.Lines.Assign(rEdt.Lines);
      tmpFrm.ShowModal;
 
      if (tmpFrm.ModalResult = mrOk) then
      begin
-       rEdt.Lines.Assign(tmpFrm.RichEdtSimple.Lines);
+//       rEdt.Lines.Assign(tmpFrm.RichEdtSimple.Lines);
      end;
 
   finally

@@ -7,3 +7,6 @@
 /Win32
 /Project1.delphilsp.json
 /Project1.dproj.local
+/*.dsk
+/Project1.identcache
+/*.~dsk

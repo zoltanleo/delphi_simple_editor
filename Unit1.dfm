@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 221
-  ClientWidth = 431
+  ClientHeight = 219
+  ClientWidth = 423
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,14 +12,14 @@ object Form1: TForm1
   Font.Style = []
   OnCreate = FormCreate
   DesignSize = (
-    431
-    221)
+    423
+    219)
   TextHeight = 15
   object rEdt: TRichEdit
     Left = 8
     Top = 8
-    Width = 334
-    Height = 205
+    Width = 326
+    Height = 203
     Anchors = [akLeft, akTop, akRight, akBottom]
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
@@ -32,7 +32,7 @@ object Form1: TForm1
     TabOrder = 0
   end
   object Button1: TButton
-    Left = 348
+    Left = 340
     Top = 8
     Width = 75
     Height = 25
@@ -40,5 +40,6 @@ object Form1: TForm1
     Caption = 'Button1'
     TabOrder = 1
     OnClick = Button1Click
+    ExplicitLeft = 344
   end
 end
