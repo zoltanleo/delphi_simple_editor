@@ -3,9 +3,28 @@
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList, PngImageList, Vcl.Menus, Vcl.ComCtrls,
-  System.Actions, Vcl.ActnList, Vcl.StdActns, Vcl.ToolWin, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Winapi.Windows
+  , Winapi.Messages
+  , System.SysUtils
+  , System.Variants
+  , System.Classes
+  , Vcl.Graphics
+  , Vcl.Controls
+  , Vcl.Forms
+  , Vcl.Dialogs
+  , System.ImageList
+  , Vcl.ImgList
+  , PngImageList
+  , Vcl.Menus
+  , Vcl.ComCtrls
+  , System.Actions
+  , Vcl.ActnList
+  , Vcl.StdActns
+  , Vcl.ToolWin
+  , Vcl.StdCtrls
+  , Vcl.ExtCtrls
+  , Arm.Settings.Common, Vcl.ActnMan, Vcl.ActnCtrls
+  ;
 
 type
   TfrmSimpleEditor = class(TForm)
@@ -103,8 +122,18 @@ type
     N50: TMenuItem;
     N51: TMenuItem;
     N52: TMenuItem;
-    CoolBar1: TCoolBar;
+    rEdt: TRichEdit;
+    ColorDlg: TColorDialog;
+    FontDlg: TFontDialog;
+    PrnDlg: TPrintDialog;
+    FileOpenDlg: TOpenDialog;
+    FileSaveDlg: TSaveDialog;
+    PgStpDlg: TPageSetupDialog;
+    FindDlg: TFindDialog;
+    ReplaceDlg: TReplaceDialog;
+    FlowPanel1: TFlowPanel;
     tbFile: TToolBar;
+    tbEdit: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
@@ -114,7 +143,6 @@ type
     ToolButton7: TToolButton;
     ToolButton8: TToolButton;
     ToolButton9: TToolButton;
-    tbEdit: TToolBar;
     ToolButton10: TToolButton;
     ToolButton11: TToolButton;
     ToolButton12: TToolButton;
@@ -124,16 +152,13 @@ type
     ToolButton16: TToolButton;
     ToolButton17: TToolButton;
     ToolButton18: TToolButton;
-    tbCbb: TToolBar;
-    tbFont: TToolBar;
-    tbFontEdit: TToolBar;
-    cbbFontFamily: TComboBox;
     ToolButton19: TToolButton;
-    cbbFontSize: TComboBox;
     ToolButton20: TToolButton;
-    ToolButton22: TToolButton;
+    ToolBar1: TToolBar;
     ToolButton21: TToolButton;
+    ToolButton22: TToolButton;
     ToolButton23: TToolButton;
+    ToolBar2: TToolBar;
     ToolButton24: TToolButton;
     ToolButton25: TToolButton;
     ToolButton26: TToolButton;
@@ -141,35 +166,38 @@ type
     ToolButton28: TToolButton;
     ToolButton29: TToolButton;
     ToolButton30: TToolButton;
+    ToolBar3: TToolBar;
     ToolButton31: TToolButton;
     ToolButton32: TToolButton;
-    ToolButton33: TToolButton;
-    ToolButton34: TToolButton;
+    ToolBar4: TToolBar;
+    cbbFontFamily: TComboBox;
+    cbbFontSize: TComboBox;
     ToolButton35: TToolButton;
+    ToolButton34: TToolButton;
+    ToolBar5: TToolBar;
     ToolButton36: TToolButton;
     ToolButton37: TToolButton;
     ToolButton38: TToolButton;
-    tbTextEdit: TToolBar;
     ToolButton39: TToolButton;
     ToolButton40: TToolButton;
     ToolButton41: TToolButton;
     ToolButton42: TToolButton;
     ToolButton43: TToolButton;
     ToolButton44: TToolButton;
+    ToolBar6: TToolBar;
     ToolButton45: TToolButton;
-    ToolButton46: TToolButton;
     ToolButton47: TToolButton;
+    ToolButton46: TToolButton;
     ToolButton48: TToolButton;
     ToolButton49: TToolButton;
-    r_edt: TRichEdit;
-    ColorDlg: TColorDialog;
-    FontDlg: TFontDialog;
-    PrnDlg: TPrintDialog;
-    FileOpenDlg: TOpenDialog;
-    FileSaveDlg: TSaveDialog;
-    PgStpDlg: TPageSetupDialog;
-    FindDlg: TFindDialog;
-    ReplaceDlg: TReplaceDialog;
+    ToolButton50: TToolButton;
+    ToolBar7: TToolBar;
+    ToolButton51: TToolButton;
+    ToolButton52: TToolButton;
+    ToolButton53: TToolButton;
+    ToolButton54: TToolButton;
+    ToolButton55: TToolButton;
+    ToolButton33: TToolButton;
     procedure ActFileNewExecute(Sender: TObject);
     procedure ActToLowerCaseExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -206,6 +234,8 @@ type
     procedure actLineSpacing_1Execute(Sender: TObject);
     procedure actLineSpacing_2Execute(Sender: TObject);
     procedure actLineSpacing_3Execute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -218,6 +248,15 @@ var
 implementation
 
 {$R *.dfm}
+const
+  tbDefaultLeft = 11;
+
+  tbCbbDefaultTop = 37;
+  tbFontDefaultTop = 100;
+  tbFontEditDefaultTop = 133;
+  tbTextEditDefaultTop = 166;
+  tbFileDefaultTop = 0;
+  tbEditDefaultTop = 37;
 
 procedure TfrmSimpleEditor.actAlignCenterExecute(Sender: TObject);
 begin
@@ -271,7 +310,7 @@ end;
 
 procedure TfrmSimpleEditor.ActFileNewExecute(Sender: TObject);
 begin
-  r_edt.Text:= 'Привет, Камиль!';
+//
 end;
 
 procedure TfrmSimpleEditor.ActFileOpenExecute(Sender: TObject);
@@ -394,35 +433,62 @@ begin
 //
 end;
 
+procedure TfrmSimpleEditor.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  with Settings do
+  begin
+    SenderObject:= sofrmSimpleEditor;
+//    SettingsFile.WriteInteger(Self.Name, 'tbCbb_left', tbCbb.Left);
+//    SettingsFile.WriteInteger(Self.Name, 'tbCbb_top', tbCbb.Top);
+    Save(Self);
+  end;
+end;
+//  tbDefaultLeft = 11;
+//
+//  tbCbbDefaultTop = 37;
+//  tbFontDefaultTop = 100;
+//  tbFontEditDefaultTop = 133;
+//  tbTextEditDefaultTop = 166;
+//  tbFileDefaultTop = 0;
+//  tbEditDefaultTop = 37;
+
 procedure TfrmSimpleEditor.FormCreate(Sender: TObject);
 var
   i: Integer;
   tmpTB: TToolBar;
 begin
   Self.ModalResult:= mrCancel;
-  cbbFontFamily.Height:= 20;
-  cbbFontSize.Height:= 20;
+  FlowPanel1.AutoSize:= True;
+  FlowPanel1.ShowCaption:= False;
+  FlowPanel1.BevelOuter:= bvNone;
 
-  with CoolBar1 do
-  begin
-    BandBorderStyle:= bsNone;
-    AutoSize:= True;
-    DoubleBuffered:= True;
-    EdgeBorders:= [];
-  end;
+  rEdt.Align:= alClient;
 
-  for i := 0 to Pred(CoolBar1.ControlCount) do
-    if TControl(CoolBar1.Controls[i]).InheritsFrom(TToolBar) then
+  for i := 0 to Pred(Self.ControlCount) do
+    if TControl(Self.Controls[i]).InheritsFrom(TToolBar) then
     begin
-      tmpTB:= TToolBar(CoolBar1.Controls[i]);
+      tmpTB:= TToolBar(Self.Controls[i]);
       with tmpTB do
       begin
-        Align:= alNone;
-        AutoSize:= True;
+        Margins.Top:= 1;
+        Margins.Left:= 1;
+        Margins.Right:= 1;
+        Margins.Bottom:= 1;
         DoubleBuffered:= True;
+        AlignWithMargins:= True;
       end;
     end;
+end;
 
+procedure TfrmSimpleEditor.FormShow(Sender: TObject);
+begin
+  with Settings do
+  begin
+    SenderObject:= sofrmSimpleEditor;
+//    tbCbb.Left:= SettingsFile.ReadInteger(Self.Name, 'tbCbb_left', tbDefaultLeft);
+//    tbCbb.Top:= SettingsFile.ReadInteger(Self.Name, 'tbCbb_top', tbCbbDefaultTop);
+    Load(Self);
+  end;
 end;
 
 end.

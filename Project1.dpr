@@ -3,7 +3,8 @@
 uses
   Vcl.Forms,
   Unit1 in 'Unit1.pas' {Form1},
-  uSimpleEditor in 'uSimpleEditor.pas' {frmSimpleEditor};
+  uSimpleEditor in 'uSimpleEditor.pas' {frmSimpleEditor},
+  Arm.Settings.Common in 'Arm.Settings.Common.pas';
 
 {$R *.res}
 

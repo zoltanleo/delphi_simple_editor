@@ -30,6 +30,8 @@ object Form1: TForm1
       'rEdt')
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 322
+    ExplicitHeight = 202
   end
   object Button1: TButton
     Left = 340
@@ -40,6 +42,6 @@ object Form1: TForm1
     Caption = 'Button1'
     TabOrder = 1
     OnClick = Button1Click
-    ExplicitLeft = 344
+    ExplicitLeft = 336
   end
 end

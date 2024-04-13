@@ -84,6 +84,7 @@ type
                   , sofrmPayments
                   , sofrmTransferData
                   , sofrmConnect
+                  , sofrmSimpleEditor
                   );
 
   {from here https://www.gunsmoker.ru/2011/04/blog-post.html}

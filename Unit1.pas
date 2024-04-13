@@ -20,7 +20,7 @@ type
   end;
 
 const
-  fn = 'c:\proj\test_delphi\delphi-SimpleEditor\рыба.rtf';
+  fn = 'c:\proj\delphi_simple_editor\рыба.rtf';
 
 var
   Form1: TForm1;
@@ -39,12 +39,18 @@ begin
   tmpFrm:= TFrmSimpleEditor.Create(Self);
   ms:= TMemoryStream.Create;
   try
-     tmpFrm.ShowModal;
+    rEdt.Lines.SaveToStream(ms);
+    ms.Position:= 0;
+    tmpFrm.rEdt.Lines.LoadFromStream(ms);
+    tmpFrm.ShowModal;
 
-     if (tmpFrm.ModalResult = mrOk) then
-     begin
-//       rEdt.Lines.Assign(tmpFrm.RichEdtSimple.Lines);
-     end;
+    if (tmpFrm.ModalResult = mrOk) then
+    begin
+      ms.Clear;
+      tmpFrm.rEdt.Lines.SaveToStream(ms);
+      ms.Position:= 0;
+       rEdt.Lines.LoadFromStream(ms);
+    end;
 
   finally
     ms.Free;

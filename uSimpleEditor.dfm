@@ -2,8 +2,8 @@ object frmSimpleEditor: TfrmSimpleEditor
   Left = 0
   Top = 0
   Caption = 'frmSimpleEditor'
-  ClientHeight = 441
-  ClientWidth = 624
+  ClientHeight = 433
+  ClientWidth = 653
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,440 +11,30 @@ object frmSimpleEditor: TfrmSimpleEditor
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = mnuMain
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 422
-    Width = 624
-    Height = 19
+    Top = 415
+    Width = 653
+    Height = 18
     Panels = <>
-    ExplicitTop = 421
-    ExplicitWidth = 620
+    ExplicitTop = 432
+    ExplicitWidth = 705
   end
-  object CoolBar1: TCoolBar
-    Left = 0
-    Top = 0
-    Width = 624
-    Height = 161
-    Bands = <
-      item
-        Control = tbFile
-        ImageIndex = -1
-        MinHeight = 22
-        Width = 618
-      end
-      item
-        Control = tbEdit
-        ImageIndex = -1
-        MinHeight = 22
-        Width = 618
-      end
-      item
-        Control = tbCbb
-        ImageIndex = -1
-        Width = 618
-      end
-      item
-        Control = tbFont
-        ImageIndex = -1
-        Width = 618
-      end
-      item
-        Control = tbFontEdit
-        ImageIndex = -1
-        Width = 618
-      end
-      item
-        Control = tbTextEdit
-        ImageIndex = -1
-        Width = 618
-      end>
-    Images = PngImgListActMng
-    ParentShowHint = False
-    ShowHint = True
-    ExplicitWidth = 620
-    object tbFile: TToolBar
-      Left = 11
-      Top = 0
-      Width = 609
-      Height = 22
-      Align = alNone
-      Caption = 'tbFile'
-      Images = PngImgListActMng
-      TabOrder = 0
-      object ToolButton1: TToolButton
-        Left = 0
-        Top = 0
-        Action = ActFileNew
-      end
-      object ToolButton2: TToolButton
-        Left = 23
-        Top = 0
-        Action = ActFileOpen
-      end
-      object ToolButton3: TToolButton
-        Left = 46
-        Top = 0
-        Action = ActSaveAs
-      end
-      object ToolButton4: TToolButton
-        Left = 69
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton4'
-        ImageIndex = 3
-        Style = tbsSeparator
-      end
-      object ToolButton5: TToolButton
-        Left = 77
-        Top = 0
-        Action = ActCloseFileWSave
-      end
-      object ToolButton6: TToolButton
-        Left = 100
-        Top = 0
-        Action = ActCloseFileWOSave
-      end
-      object ToolButton7: TToolButton
-        Left = 123
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton7'
-        ImageIndex = 6
-        Style = tbsSeparator
-      end
-      object ToolButton8: TToolButton
-        Left = 131
-        Top = 0
-        Action = ActPgStp
-      end
-      object ToolButton9: TToolButton
-        Left = 154
-        Top = 0
-        Action = ActPrint
-      end
-      object ToolButton48: TToolButton
-        Left = 177
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton48'
-        ImageIndex = 9
-        Style = tbsSeparator
-      end
-      object ToolButton49: TToolButton
-        Left = 185
-        Top = 0
-        Action = ActDivString
-      end
-    end
-    object tbEdit: TToolBar
-      Left = 11
-      Top = 24
-      Width = 609
-      Height = 22
-      Align = alNone
-      Caption = 'tbEdit'
-      Images = PngImgListActMng
-      TabOrder = 1
-      object ToolButton10: TToolButton
-        Left = 0
-        Top = 0
-        Action = ActSearchText
-      end
-      object ToolButton11: TToolButton
-        Left = 23
-        Top = 0
-        Caption = 'ToolButton11'
-        ImageIndex = 10
-      end
-      object ToolButton12: TToolButton
-        Left = 46
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton12'
-        ImageIndex = 11
-        Style = tbsSeparator
-      end
-      object ToolButton13: TToolButton
-        Left = 54
-        Top = 0
-        Caption = 'ToolButton13'
-        ImageIndex = 11
-      end
-      object ToolButton14: TToolButton
-        Left = 77
-        Top = 0
-        Caption = 'ToolButton14'
-        ImageIndex = 12
-      end
-      object ToolButton15: TToolButton
-        Left = 100
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton15'
-        ImageIndex = 13
-        Style = tbsSeparator
-      end
-      object ToolButton16: TToolButton
-        Left = 108
-        Top = 0
-        Caption = 'ToolButton16'
-        ImageIndex = 13
-      end
-      object ToolButton17: TToolButton
-        Left = 131
-        Top = 0
-        Caption = 'ToolButton17'
-        ImageIndex = 14
-      end
-      object ToolButton18: TToolButton
-        Left = 154
-        Top = 0
-        Caption = 'ToolButton18'
-        ImageIndex = 15
-      end
-    end
-    object tbCbb: TToolBar
-      Left = 11
-      Top = 48
-      Width = 609
-      Height = 25
-      Align = alNone
-      ButtonHeight = 23
-      ButtonWidth = 10
-      Caption = 'tbCbb'
-      TabOrder = 2
-      object cbbFontFamily: TComboBox
-        Left = 0
-        Top = 0
-        Width = 145
-        Height = 23
-        Align = alLeft
-        AutoCloseUp = True
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        TabOrder = 0
-        Text = 'cbbFontFamily'
-      end
-      object ToolButton19: TToolButton
-        Left = 145
-        Top = 0
-        Caption = 'ToolButton19'
-      end
-      object cbbFontSize: TComboBox
-        Left = 155
-        Top = 0
-        Width = 47
-        Height = 23
-        Align = alLeft
-        AutoCloseUp = True
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        TabOrder = 1
-        Text = 'cbbFontSize'
-      end
-    end
-    object tbFont: TToolBar
-      Left = 11
-      Top = 75
-      Width = 609
-      Height = 25
-      Align = alNone
-      Caption = 'tbFontAttribute'
-      Images = PngImgListActMng
-      TabOrder = 3
-      object ToolButton20: TToolButton
-        Left = 0
-        Top = 0
-        Action = ActFontChoice
-      end
-      object ToolButton22: TToolButton
-        Left = 23
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton22'
-        ImageIndex = 27
-        Style = tbsSeparator
-      end
-      object ToolButton21: TToolButton
-        Left = 31
-        Top = 0
-        Action = ActFontColor
-      end
-      object ToolButton23: TToolButton
-        Left = 54
-        Top = 0
-        Action = ActFontBackgrnd
-      end
-      object ToolButton24: TToolButton
-        Left = 77
-        Top = 0
-        Action = ActFontForegrnd
-      end
-      object ToolButton25: TToolButton
-        Left = 100
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton25'
-        ImageIndex = 26
-        Style = tbsSeparator
-      end
-      object ToolButton26: TToolButton
-        Left = 108
-        Top = 0
-        Action = ActFontSizeInc
-      end
-      object ToolButton27: TToolButton
-        Left = 131
-        Top = 0
-        Action = ActFontSizeDec
-      end
-      object ToolButton28: TToolButton
-        Left = 154
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton28'
-        ImageIndex = 34
-        Style = tbsSeparator
-      end
-      object ToolButton29: TToolButton
-        Left = 162
-        Top = 0
-        Action = ActToUpperCase
-      end
-      object ToolButton30: TToolButton
-        Left = 185
-        Top = 0
-        Action = ActToLowerCase
-      end
-    end
-    object tbFontEdit: TToolBar
-      Left = 11
-      Top = 102
-      Width = 609
-      Height = 25
-      Align = alNone
-      Caption = 'tbFontEdit'
-      Images = PngImgListActMng
-      TabOrder = 4
-      object ToolButton31: TToolButton
-        Left = 0
-        Top = 0
-        Action = actFontBold
-      end
-      object ToolButton32: TToolButton
-        Left = 23
-        Top = 0
-        Action = actFontItalic
-      end
-      object ToolButton33: TToolButton
-        Left = 46
-        Top = 0
-        Action = actFontUnderline
-      end
-      object ToolButton34: TToolButton
-        Left = 69
-        Top = 0
-        Action = actFontStrikeOut
-      end
-      object ToolButton35: TToolButton
-        Left = 92
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton35'
-        ImageIndex = 23
-        Style = tbsSeparator
-      end
-      object ToolButton36: TToolButton
-        Left = 100
-        Top = 0
-        Action = actAlignLeft
-      end
-      object ToolButton37: TToolButton
-        Left = 123
-        Top = 0
-        Action = actAlignCenter
-      end
-      object ToolButton38: TToolButton
-        Left = 146
-        Top = 0
-        Action = actAlignRight
-      end
-    end
-    object tbTextEdit: TToolBar
-      Left = 11
-      Top = 129
-      Width = 609
-      Height = 25
-      Align = alNone
-      Caption = 'tbTextEdit'
-      Images = PngImgListActMng
-      TabOrder = 5
-      object ToolButton39: TToolButton
-        Left = 0
-        Top = 0
-        Action = ActInsertSymbol
-      end
-      object ToolButton40: TToolButton
-        Left = 23
-        Top = 0
-        Action = actInsertBullets
-      end
-      object ToolButton41: TToolButton
-        Left = 46
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton41'
-        ImageIndex = 31
-        Style = tbsSeparator
-      end
-      object ToolButton42: TToolButton
-        Left = 54
-        Top = 0
-        Action = actLineSpacing_1
-      end
-      object ToolButton43: TToolButton
-        Left = 77
-        Top = 0
-        Action = actLineSpacing_2
-      end
-      object ToolButton44: TToolButton
-        Left = 100
-        Top = 0
-        Action = actLineSpacing_3
-      end
-      object ToolButton45: TToolButton
-        Left = 123
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton45'
-        ImageIndex = 67
-        Style = tbsSeparator
-      end
-      object ToolButton46: TToolButton
-        Left = 131
-        Top = 0
-        Action = ActChrSubScript
-      end
-      object ToolButton47: TToolButton
-        Left = 154
-        Top = 0
-        Action = ActChrSupraScript
-      end
-    end
-  end
-  object r_edt: TRichEdit
+  object rEdt: TRichEdit
     AlignWithMargins = True
     Left = 8
-    Top = 169
-    Width = 608
-    Height = 245
+    Top = 76
+    Width = 637
+    Height = 331
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
     Margins.Bottom = 8
-    Align = alClient
+    Align = alBottom
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
@@ -454,9 +44,664 @@ object frmSimpleEditor: TfrmSimpleEditor
       'r_edt')
     ParentFont = False
     ScrollBars = ssBoth
+    TabOrder = 1
+  end
+  object FlowPanel1: TFlowPanel
+    Left = 0
+    Top = 0
+    Width = 653
+    Height = 65
+    Align = alTop
+    Caption = 'FlowPanel1'
     TabOrder = 2
-    ExplicitLeft = 3
-    ExplicitTop = 167
+    ExplicitWidth = 705
+    object tbFile: TToolBar
+      Left = 1
+      Top = 1
+      Width = 181
+      Height = 24
+      Caption = 'tbFile'
+      Images = PngImgListActMng
+      TabOrder = 0
+      object ToolButton1: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFileNew
+      end
+      object ToolButton3: TToolButton
+        Left = 23
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFileOpen
+      end
+      object ToolButton5: TToolButton
+        Left = 46
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActSaveAs
+      end
+      object ToolButton6: TToolButton
+        Left = 69
+        Top = 0
+        Width = 6
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton6'
+        ImageIndex = 4
+        Style = tbsSeparator
+      end
+      object ToolButton7: TToolButton
+        Left = 75
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActCloseFileWSave
+      end
+      object ToolButton8: TToolButton
+        Left = 98
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActCloseFileWOSave
+      end
+      object ToolButton9: TToolButton
+        Left = 121
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton9'
+        ImageIndex = 6
+        Style = tbsSeparator
+      end
+      object ToolButton10: TToolButton
+        Left = 128
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActPgStp
+      end
+      object ToolButton11: TToolButton
+        Left = 151
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActPrint
+      end
+      object ToolButton12: TToolButton
+        Left = 174
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton12'
+        ImageIndex = 9
+        Style = tbsSeparator
+      end
+    end
+    object tbEdit: TToolBar
+      Left = 182
+      Top = 1
+      Width = 183
+      Height = 24
+      Caption = 'tbEdit'
+      Images = PngImgListActMng
+      TabOrder = 1
+      object ToolButton2: TToolButton
+        AlignWithMargins = True
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActSearchText
+      end
+      object ToolButton4: TToolButton
+        Left = 23
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActReplaceText
+      end
+      object ToolButton13: TToolButton
+        Left = 46
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton13'
+        ImageIndex = 11
+        Style = tbsSeparator
+      end
+      object ToolButton14: TToolButton
+        Left = 53
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActUndo
+      end
+      object ToolButton15: TToolButton
+        Left = 76
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActRedo
+      end
+      object ToolButton16: TToolButton
+        Left = 99
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton16'
+        ImageIndex = 13
+        Style = tbsSeparator
+      end
+      object ToolButton17: TToolButton
+        Left = 106
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActCutToClipbrd
+      end
+      object ToolButton18: TToolButton
+        Left = 129
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActCopyToClipbrd
+      end
+      object ToolButton19: TToolButton
+        Left = 152
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActPasteToClipbrd
+      end
+      object ToolButton20: TToolButton
+        Left = 175
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton20'
+        ImageIndex = 16
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar1: TToolBar
+      Left = 365
+      Top = 1
+      Width = 57
+      Height = 24
+      Caption = 'ToolBar1'
+      Images = PngImgListActMng
+      TabOrder = 2
+      object ToolButton21: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActInsertSymbol
+      end
+      object ToolButton22: TToolButton
+        Left = 23
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actInsertBullets
+      end
+      object ToolButton23: TToolButton
+        Left = 46
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton23'
+        ImageIndex = 31
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar2: TToolBar
+      Left = 422
+      Top = 1
+      Width = 131
+      Height = 24
+      Caption = 'ToolBar2'
+      Images = PngImgListActMng
+      TabOrder = 3
+      object ToolButton24: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actLineSpacing_1
+      end
+      object ToolButton25: TToolButton
+        Left = 23
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actLineSpacing_2
+      end
+      object ToolButton26: TToolButton
+        Left = 46
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actLineSpacing_3
+      end
+      object ToolButton27: TToolButton
+        Left = 69
+        Top = 0
+        Width = 6
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton27'
+        ImageIndex = 67
+        Style = tbsSeparator
+      end
+      object ToolButton28: TToolButton
+        Left = 75
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActChrSubScript
+      end
+      object ToolButton29: TToolButton
+        Left = 98
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActChrSupraScript
+      end
+      object ToolButton30: TToolButton
+        Left = 121
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton30'
+        ImageIndex = 80
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar3: TToolBar
+      Left = 553
+      Top = 1
+      Width = 31
+      Height = 24
+      Caption = 'ToolBar3'
+      Images = PngImgListActMng
+      TabOrder = 4
+      object ToolButton31: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActDivString
+      end
+      object ToolButton32: TToolButton
+        Left = 23
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton32'
+        ImageIndex = 49
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar4: TToolBar
+      Left = 1
+      Top = 25
+      Width = 225
+      Height = 24
+      Caption = 'ToolBar4'
+      Images = PngImgListActMng
+      TabOrder = 5
+      object ToolButton33: TToolButton
+        Left = 0
+        Top = 0
+        Width = 9
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton33'
+        Style = tbsDivider
+      end
+      object cbbFontFamily: TComboBox
+        Left = 9
+        Top = 0
+        Width = 138
+        Height = 23
+        ExtendedUI = True
+        TabOrder = 0
+        Text = 'cbbFontFamily'
+      end
+      object ToolButton35: TToolButton
+        Left = 147
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton35'
+        ImageIndex = 0
+        Style = tbsSeparator
+      end
+      object cbbFontSize: TComboBox
+        Left = 154
+        Top = 0
+        Width = 65
+        Height = 23
+        TabOrder = 1
+        Text = 'cbbFontSize'
+      end
+      object ToolButton34: TToolButton
+        Left = 219
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton34'
+        ImageIndex = 1
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar5: TToolBar
+      Left = 226
+      Top = 25
+      Width = 176
+      Height = 29
+      Caption = 'ToolBar5'
+      Images = PngImgListActMng
+      TabOrder = 6
+      object ToolButton36: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actFontBold
+      end
+      object ToolButton37: TToolButton
+        Left = 23
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actFontItalic
+      end
+      object ToolButton38: TToolButton
+        Left = 46
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actFontUnderline
+      end
+      object ToolButton39: TToolButton
+        Left = 69
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actFontStrikeOut
+      end
+      object ToolButton40: TToolButton
+        Left = 92
+        Top = 0
+        Width = 6
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton40'
+        ImageIndex = 23
+        Style = tbsSeparator
+      end
+      object ToolButton41: TToolButton
+        Left = 98
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actAlignLeft
+      end
+      object ToolButton42: TToolButton
+        Left = 121
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actAlignCenter
+      end
+      object ToolButton43: TToolButton
+        Left = 144
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = actAlignRight
+      end
+      object ToolButton44: TToolButton
+        Left = 167
+        Top = 0
+        Width = 6
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton44'
+        ImageIndex = 19
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar6: TToolBar
+      Left = 402
+      Top = 25
+      Width = 108
+      Height = 29
+      Caption = 'ToolBar6'
+      Images = PngImgListActMng
+      TabOrder = 7
+      object ToolButton45: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFontChoice
+      end
+      object ToolButton47: TToolButton
+        Left = 23
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton47'
+        ImageIndex = 2
+        Style = tbsSeparator
+      end
+      object ToolButton46: TToolButton
+        Left = 30
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFontColor
+      end
+      object ToolButton48: TToolButton
+        Left = 53
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFontBackgrnd
+      end
+      object ToolButton49: TToolButton
+        Left = 76
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFontForegrnd
+      end
+      object ToolButton50: TToolButton
+        Left = 99
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton50'
+        ImageIndex = 26
+        Style = tbsSeparator
+      end
+    end
+    object ToolBar7: TToolBar
+      Left = 510
+      Top = 25
+      Width = 102
+      Height = 29
+      Caption = 'ToolBar7'
+      Images = PngImgListActMng
+      TabOrder = 8
+      object ToolButton51: TToolButton
+        Left = 0
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFontSizeInc
+      end
+      object ToolButton52: TToolButton
+        Left = 23
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActFontSizeDec
+      end
+      object ToolButton53: TToolButton
+        Left = 46
+        Top = 0
+        Width = 7
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Caption = 'ToolButton53'
+        ImageIndex = 34
+        Style = tbsSeparator
+      end
+      object ToolButton54: TToolButton
+        Left = 53
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActToUpperCase
+      end
+      object ToolButton55: TToolButton
+        Left = 76
+        Top = 0
+        Margins.Left = 2
+        Margins.Top = 2
+        Margins.Right = 2
+        Margins.Bottom = 2
+        Action = ActToLowerCase
+      end
+    end
   end
   object PngImgListActMng: TPngImageList
     PngImages = <

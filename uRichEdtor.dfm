@@ -3,11 +3,11 @@ object FrmSimpleEditor: TFrmSimpleEditor
   Top = 290
   ActiveControl = RichEdtSimple
   Caption = 'FrmSimpleEditor'
-  ClientHeight = 456
-  ClientWidth = 684
+  ClientHeight = 462
+  ClientWidth = 692
   Color = clBtnFace
-  Constraints.MinHeight = 489
-  Constraints.MinWidth = 700
+  Constraints.MinHeight = 395
+  Constraints.MinWidth = 562
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -23,7 +23,7 @@ object FrmSimpleEditor: TFrmSimpleEditor
   object ActionMainMenuBar1: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 684
+    Width = 692
     Height = 25
     UseSystemFont = False
     ActionManager = ActManager
@@ -34,29 +34,32 @@ object FrmSimpleEditor: TFrmSimpleEditor
     ColorMap.BtnSelectedFont = clBlack
     ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Spacing = 0
+    ExplicitHeight = 26
   end
   object PnlRichEdt: TPanel
     Left = 0
     Top = 83
-    Width = 684
-    Height = 354
+    Width = 692
+    Height = 360
     Align = alClient
     BevelOuter = bvNone
     Caption = 'PnlRichEdt'
     TabOrder = 2
+    ExplicitTop = 84
+    ExplicitHeight = 359
     DesignSize = (
-      684
-      354)
+      692
+      360)
     object RichEdtSimple: TRichEdit
       Left = 7
       Top = 6
-      Width = 647
-      Height = 337
+      Width = 649
+      Height = 343
       Anchors = [akLeft, akTop, akRight, akBottom]
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
@@ -72,12 +75,13 @@ object FrmSimpleEditor: TFrmSimpleEditor
       OnKeyUp = RichEdtSimpleKeyUp
       OnMouseDown = RichEdtSimpleMouseDown
       OnMouseUp = RichEdtSimpleMouseUp
+      ExplicitHeight = 342
     end
   end
   object StatusBarEdit: TStatusBar
     Left = 0
-    Top = 437
-    Width = 684
+    Top = 443
+    Width = 692
     Height = 19
     Panels = <
       item
@@ -94,17 +98,18 @@ object FrmSimpleEditor: TFrmSimpleEditor
   object PnlToolBarMain: TPanel
     Left = 0
     Top = 25
-    Width = 684
+    Width = 692
     Height = 58
     Align = alTop
     AutoSize = True
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 26
     object PnlToolBarFile: TPanel
       Left = 0
       Top = 0
-      Width = 684
-      Height = 26
+      Width = 692
+      Height = 24
       Align = alTop
       AutoSize = True
       BevelOuter = bvNone
@@ -113,8 +118,8 @@ object FrmSimpleEditor: TFrmSimpleEditor
       object ActionToolBar1: TActionToolBar
         Left = 0
         Top = 0
-        Width = 684
-        Height = 26
+        Width = 692
+        Height = 24
         ActionManager = ActManager
         Align = alBottom
         Caption = 'ActionToolBar1'
@@ -134,13 +139,15 @@ object FrmSimpleEditor: TFrmSimpleEditor
     end
     object PnlToolBarCbBox: TPanel
       Left = 0
-      Top = 26
+      Top = 24
       Width = 223
-      Height = 32
+      Height = 34
       Align = alLeft
       BevelOuter = bvNone
       Caption = 'PnlToolBarCbBox'
       TabOrder = 1
+      ExplicitTop = 22
+      ExplicitHeight = 36
       object CbBoxFontName: TComboBox
         Left = 7
         Top = 3
@@ -185,19 +192,21 @@ object FrmSimpleEditor: TFrmSimpleEditor
     end
     object PnlToolBarFont: TPanel
       Left = 223
-      Top = 26
-      Width = 461
-      Height = 32
+      Top = 24
+      Width = 469
+      Height = 34
       Align = alClient
       AutoSize = True
       BevelOuter = bvNone
       Caption = 'PnlToolBarFont'
       TabOrder = 2
+      ExplicitTop = 22
+      ExplicitHeight = 36
       object ActionToolBar2: TActionToolBar
         Left = 0
         Top = 0
-        Width = 461
-        Height = 26
+        Width = 469
+        Height = 24
         ActionManager = ActManager
         Caption = 'ActionToolBar2'
         Color = clMenuBar
@@ -212,6 +221,7 @@ object FrmSimpleEditor: TFrmSimpleEditor
         Font.Style = []
         ParentFont = False
         Spacing = 0
+        ExplicitHeight = 22
       end
     end
   end
