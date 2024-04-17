@@ -34,12 +34,11 @@ object FrmSimpleEditor: TFrmSimpleEditor
     ColorMap.BtnSelectedFont = clBlack
     ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
     Spacing = 0
-    ExplicitHeight = 26
   end
   object PnlRichEdt: TPanel
     Left = 0
@@ -50,8 +49,6 @@ object FrmSimpleEditor: TFrmSimpleEditor
     BevelOuter = bvNone
     Caption = 'PnlRichEdt'
     TabOrder = 2
-    ExplicitTop = 84
-    ExplicitHeight = 359
     DesignSize = (
       692
       360)
@@ -75,7 +72,6 @@ object FrmSimpleEditor: TFrmSimpleEditor
       OnKeyUp = RichEdtSimpleKeyUp
       OnMouseDown = RichEdtSimpleMouseDown
       OnMouseUp = RichEdtSimpleMouseUp
-      ExplicitHeight = 342
     end
   end
   object StatusBarEdit: TStatusBar
@@ -104,7 +100,6 @@ object FrmSimpleEditor: TFrmSimpleEditor
     AutoSize = True
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 26
     object PnlToolBarFile: TPanel
       Left = 0
       Top = 0
@@ -146,8 +141,6 @@ object FrmSimpleEditor: TFrmSimpleEditor
       BevelOuter = bvNone
       Caption = 'PnlToolBarCbBox'
       TabOrder = 1
-      ExplicitTop = 22
-      ExplicitHeight = 36
       object CbBoxFontName: TComboBox
         Left = 7
         Top = 3
@@ -200,8 +193,6 @@ object FrmSimpleEditor: TFrmSimpleEditor
       BevelOuter = bvNone
       Caption = 'PnlToolBarFont'
       TabOrder = 2
-      ExplicitTop = 22
-      ExplicitHeight = 36
       object ActionToolBar2: TActionToolBar
         Left = 0
         Top = 0
@@ -221,7 +212,6 @@ object FrmSimpleEditor: TFrmSimpleEditor
         Font.Style = []
         ParentFont = False
         Spacing = 0
-        ExplicitHeight = 22
       end
     end
   end

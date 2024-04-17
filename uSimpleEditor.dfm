@@ -2,8 +2,8 @@ object frmSimpleEditor: TfrmSimpleEditor
   Left = 0
   Top = 0
   Caption = 'frmSimpleEditor'
-  ClientHeight = 433
-  ClientWidth = 653
+  ClientHeight = 437
+  ClientWidth = 841
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,18 +17,18 @@ object frmSimpleEditor: TfrmSimpleEditor
   TextHeight = 15
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 415
-    Width = 653
+    Top = 419
+    Width = 841
     Height = 18
     Panels = <>
-    ExplicitTop = 432
-    ExplicitWidth = 705
+    ExplicitTop = 410
+    ExplicitWidth = 835
   end
   object rEdt: TRichEdit
     AlignWithMargins = True
     Left = 8
-    Top = 76
-    Width = 637
+    Top = 80
+    Width = 825
     Height = 331
     Margins.Left = 8
     Margins.Top = 8
@@ -45,16 +45,19 @@ object frmSimpleEditor: TfrmSimpleEditor
     ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 1
+    OnMouseDown = rEdtMouseDown
+    ExplicitTop = 71
+    ExplicitWidth = 819
   end
   object FlowPanel1: TFlowPanel
     Left = 0
     Top = 0
-    Width = 653
+    Width = 841
     Height = 65
     Align = alTop
     Caption = 'FlowPanel1'
     TabOrder = 2
-    ExplicitWidth = 705
+    ExplicitWidth = 835
     object tbFile: TToolBar
       Left = 1
       Top = 1
@@ -123,7 +126,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       object ToolButton9: TToolButton
         Left = 121
         Top = 0
-        Width = 7
+        Width = 8
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -133,7 +136,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Style = tbsSeparator
       end
       object ToolButton10: TToolButton
-        Left = 128
+        Left = 129
         Top = 0
         Margins.Left = 2
         Margins.Top = 2
@@ -142,7 +145,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Action = ActPgStp
       end
       object ToolButton11: TToolButton
-        Left = 151
+        Left = 152
         Top = 0
         Margins.Left = 2
         Margins.Top = 2
@@ -151,9 +154,9 @@ object frmSimpleEditor: TfrmSimpleEditor
         Action = ActPrint
       end
       object ToolButton12: TToolButton
-        Left = 174
+        Left = 175
         Top = 0
-        Width = 7
+        Width = 5
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -379,7 +382,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       object ToolButton30: TToolButton
         Left = 121
         Top = 0
-        Width = 7
+        Width = 8
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -405,6 +408,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Margins.Right = 2
         Margins.Bottom = 2
         Action = ActDivString
+        Style = tbsCheck
       end
       object ToolButton32: TToolButton
         Left = 23
@@ -422,8 +426,9 @@ object frmSimpleEditor: TfrmSimpleEditor
     object ToolBar4: TToolBar
       Left = 1
       Top = 25
-      Width = 225
+      Width = 303
       Height = 24
+      ButtonHeight = 23
       Caption = 'ToolBar4'
       Images = PngImgListActMng
       TabOrder = 5
@@ -441,14 +446,15 @@ object frmSimpleEditor: TfrmSimpleEditor
       object cbbFontFamily: TComboBox
         Left = 9
         Top = 0
-        Width = 138
+        Width = 210
         Height = 23
         ExtendedUI = True
         TabOrder = 0
         Text = 'cbbFontFamily'
+        OnChange = cbbFontFamilyChange
       end
       object ToolButton35: TToolButton
-        Left = 147
+        Left = 219
         Top = 0
         Width = 7
         Margins.Left = 2
@@ -460,7 +466,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Style = tbsSeparator
       end
       object cbbFontSize: TComboBox
-        Left = 154
+        Left = 226
         Top = 0
         Width = 65
         Height = 23
@@ -468,7 +474,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Text = 'cbbFontSize'
       end
       object ToolButton34: TToolButton
-        Left = 219
+        Left = 291
         Top = 0
         Width = 7
         Margins.Left = 2
@@ -481,7 +487,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       end
     end
     object ToolBar5: TToolBar
-      Left = 226
+      Left = 304
       Top = 25
       Width = 176
       Height = 29
@@ -566,7 +572,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       object ToolButton44: TToolButton
         Left = 167
         Top = 0
-        Width = 6
+        Width = 5
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -577,7 +583,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       end
     end
     object ToolBar6: TToolBar
-      Left = 402
+      Left = 480
       Top = 25
       Width = 108
       Height = 29
@@ -646,7 +652,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       end
     end
     object ToolBar7: TToolBar
-      Left = 510
+      Left = 588
       Top = 25
       Width = 102
       Height = 29
@@ -1764,14 +1770,12 @@ object frmSimpleEditor: TfrmSimpleEditor
     object ActUndo: TAction
       Category = 'Edit'
       Caption = #1064#1072#1075' '#1085#1072#1079#1072#1076
-      Enabled = False
       Hint = #1064#1072#1075' '#1085#1072#1079#1072#1076
       ImageIndex = 11
     end
     object ActRedo: TAction
       Category = 'Edit'
       Caption = #1064#1072#1075' '#1074#1087#1077#1088#1077#1076
-      Enabled = False
       Hint = #1064#1072#1075' '#1074#1087#1077#1088#1077#1076
       ImageIndex = 12
     end
@@ -1794,6 +1798,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       Caption = #1064#1088#1080#1092#1090
       Hint = #1042#1099#1073#1088#1072#1090#1100' '#1072#1090#1090#1088#1080#1073#1091#1090#1099' '#1096#1088#1080#1092#1090#1072
       ImageIndex = 28
+      OnExecute = ActFontChoiceExecute
     end
     object ActFontColor: TAction
       Category = 'Font'
@@ -2160,8 +2165,8 @@ object frmSimpleEditor: TfrmSimpleEditor
     MarginTop = 2500
     MarginRight = 2500
     MarginBottom = 2500
-    PageWidth = 14800
-    PageHeight = 21000
+    PageWidth = 21000
+    PageHeight = 29700
     Left = 464
     Top = 216
   end

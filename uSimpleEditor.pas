@@ -5,6 +5,7 @@ interface
 uses
   Winapi.Windows
   , Winapi.Messages
+  , Winapi.RichEdit
   , System.SysUtils
   , System.Variants
   , System.Classes
@@ -23,11 +24,14 @@ uses
   , Vcl.ToolWin
   , Vcl.StdCtrls
   , Vcl.ExtCtrls
-  , Arm.Settings.Common, Vcl.ActnMan, Vcl.ActnCtrls
+  , Arm.Settings.Common
+  , Vcl.ActnMan
+  , Vcl.ActnCtrls
   ;
 
 type
   TfrmSimpleEditor = class(TForm)
+  {$REGION 'StdComp'}
     PngImgListActMng: TPngImageList;
     actList: TActionList;
     mnuMain: TMainMenu;
@@ -236,8 +240,13 @@ type
     procedure actLineSpacing_3Execute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure ActFontChoiceExecute(Sender: TObject);
+    procedure rEdtMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure cbbFontFamilyChange(Sender: TObject);
+  {$ENDREGION}
   private
     { Private declarations }
+    function GetCurrCol: Integer;
   public
     { Public declarations }
   end;
@@ -248,15 +257,6 @@ var
 implementation
 
 {$R *.dfm}
-const
-  tbDefaultLeft = 11;
-
-  tbCbbDefaultTop = 37;
-  tbFontDefaultTop = 100;
-  tbFontEditDefaultTop = 133;
-  tbTextEditDefaultTop = 166;
-  tbFileDefaultTop = 0;
-  tbEditDefaultTop = 37;
 
 procedure TfrmSimpleEditor.actAlignCenterExecute(Sender: TObject);
 begin
@@ -285,42 +285,97 @@ end;
 
 procedure TfrmSimpleEditor.ActCloseFileWOSaveExecute(Sender: TObject);
 begin
-//
+  Self.ModalResult:= mrCancel;
 end;
 
 procedure TfrmSimpleEditor.ActCloseFileWSaveExecute(Sender: TObject);
 begin
-//
+  Self.ModalResult:= mrOk;
 end;
 
 procedure TfrmSimpleEditor.ActCopyToClipbrdExecute(Sender: TObject);
 begin
-//
+  rEdt.CopyToClipboard;
 end;
 
 procedure TfrmSimpleEditor.ActCutToClipbrdExecute(Sender: TObject);
 begin
-//
+  rEdt.CutToClipboard;
 end;
 
 procedure TfrmSimpleEditor.ActDivStringExecute(Sender: TObject);
 begin
-//
+//  if ToolButton31.Down
+//    then ToolButton31.Down:= False
+//    else ToolButton31.Down:= True;
+
+  if ToolButton31.Down
+    then rEdt.ScrollBars:= TScrollStyle.ssVertical
+    else rEdt.ScrollBars:= TScrollStyle.ssBoth;
+
+//  ToolButton31.Down:= not ToolButton31.Down;
 end;
 
 procedure TfrmSimpleEditor.ActFileNewExecute(Sender: TObject);
+var
+  ID: Integer;
 begin
-//
+  if rEdt.Modified then
+  begin
+    ID := Application.MessageBox('Текст в редакторе был изменен. Хотите сохранить изменения?', 'Сохранение данных', MB_ICONINFORMATION + MB_YESNOCANCEL);
+    case ID of
+      IDYES:
+        ActSaveAsExecute(Sender); //сначала сохраняем файл
+      IDCANCEL: Exit;
+    end;
+  end;
+
+//оставшиеся два варианта (IDYES и IDNO) в лююбом случае предполагают "обнуление" рич-эдита
+  with rEdt do
+  begin
+    Modified := False;
+    Clear;
+    SelStart := 0;
+    SelAttributes.Assign(DefAttributes);
+
+    //устанавливаем начальные параметры запоминаемых действий в буфере
+//    UndoRedoInit(Sender);
+  end;
 end;
 
 procedure TfrmSimpleEditor.ActFileOpenExecute(Sender: TObject);
+var
+  ID: Integer;
 begin
-//
+  if rEdt.Modified then
+  begin
+    ID := Application.MessageBox('Текст в редакторе был изменен. Хотите сохранить изменения?', 'Сохранение данных', MB_ICONINFORMATION + MB_YESNOCANCEL);
+    case ID of
+      IDYES:
+        ActSaveAsExecute(Sender); //сначала сохраняем файл
+      IDCANCEL:
+        Exit; //молча уходим из процедуры
+    end;
+  end;
+
+  if FileOpenDlg.Execute then
+  begin
+    rEdt.Lines.LoadFromFile(FileOpenDlg.FileName);
+//    UndoRedoInit(Sender); //устанавливаем начальные параметры запоминаемых действий в буфере
+  end;
 end;
 
 procedure TfrmSimpleEditor.ActFontBackgrndExecute(Sender: TObject);
 begin
-//
+  if ColorDlg.Execute then
+  begin
+    rEdt.SelAttributes.BackColor:= ColorDlg.Color;
+    if (rEdt.SelLength > 0) then
+    begin
+      rEdt.SelLength:= 0;
+      rEdt.SelAttributes:= rEdt.DefAttributes;
+    end;
+  end;
 end;
 
 procedure TfrmSimpleEditor.actFontBoldExecute(Sender: TObject);
@@ -328,9 +383,40 @@ begin
 //
 end;
 
+procedure TfrmSimpleEditor.ActFontChoiceExecute(Sender: TObject);
+begin
+  if FontDlg.Execute then
+  begin
+    with rEdt.SelAttributes do
+    begin
+      Name := FontDlg.Font.Name;
+      Color := FontDlg.Font.Color;
+      Size := FontDlg.Font.Size;
+      Style := FontDlg.Font.Style;
+      cbbFontFamily.ItemIndex := cbbFontFamily.Items.IndexOf(Name);
+      cbbFontSize.Text := IntToStr(Size);
+    end;
+
+    if (rEdt.SelLength > 0) then
+    begin
+      rEdt.SelLength:= 0;
+      rEdt.SelAttributes:= rEdt.DefAttributes;
+    end;
+  end;
+end;
+
 procedure TfrmSimpleEditor.ActFontColorExecute(Sender: TObject);
 begin
-//
+  if ColorDlg.Execute then
+  begin
+    rEdt.SelAttributes.Color := ColorDlg.Color;
+
+    if (rEdt.SelLength > 0) then
+    begin
+      rEdt.SelLength:= 0;
+      rEdt.SelAttributes:= rEdt.DefAttributes;
+    end;
+  end;
 end;
 
 procedure TfrmSimpleEditor.ActFontForegrndExecute(Sender: TObject);
@@ -390,7 +476,7 @@ end;
 
 procedure TfrmSimpleEditor.ActPasteToClipbrdExecute(Sender: TObject);
 begin
-//
+  rEdt.PasteFromClipboard;
 end;
 
 procedure TfrmSimpleEditor.ActPgStpExecute(Sender: TObject);
@@ -405,22 +491,49 @@ end;
 
 procedure TfrmSimpleEditor.ActReplaceTextExecute(Sender: TObject);
 begin
-//
+  ReplaceDlg.Execute;
 end;
 
 procedure TfrmSimpleEditor.ActSaveAsExecute(Sender: TObject);
+var
+  IntPos: Integer;
+  FName: string;
+  f: TextFile;
 begin
-//
+  if FileSaveDlg.Execute then
+  begin
+    case FileSaveDlg.FilterIndex of
+      1: //txt
+        begin
+          if Application.MessageBox('Вы пытаетесь сохранить данные в простом текстовом формате, что неизбежно приведет к '
+                                    + 'потере форматирования текста (начертания шрифтов, выравнивания, выделения и проч.) Продолжить?',
+                                    'Возможная потеря данных', MB_ICONINFORMATION + MB_YESNO) = IDYes then
+            begin
+              FName:= FileSaveDlg.FileName + '.txt';
+              AssignFile(f, FName); //присваяем переменной имя файла
+              Rewrite(f); //создаем текстовый файл
+              Writeln(f, Trim(rEdt.Text)); //пишем туда текст
+              CloseFile(f); //закрываем файл
+            end;
+        end;
+      2: //rtf
+        begin
+          FName := FileSaveDlg.FileName + '.rtf';
+          rEdt.Lines.SaveToFile(FName);
+        end;
+    end;
+  end;
 end;
 
 procedure TfrmSimpleEditor.ActSearchTextExecute(Sender: TObject);
 begin
-//
+//  FindDlg.Position := Point(Self.Left + Self.Width div 4, Self.Top + Self.Height div 4);
+//  FindDlg.Execute;
 end;
 
 procedure TfrmSimpleEditor.ActSelectAllExecute(Sender: TObject);
 begin
-//
+  rEdt.SelectAll;
 end;
 
 procedure TfrmSimpleEditor.ActToLowerCaseExecute(Sender: TObject);
@@ -433,24 +546,20 @@ begin
 //
 end;
 
+procedure TfrmSimpleEditor.cbbFontFamilyChange(Sender: TObject);
+begin
+//
+end;
+
 procedure TfrmSimpleEditor.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   with Settings do
   begin
     SenderObject:= sofrmSimpleEditor;
-//    SettingsFile.WriteInteger(Self.Name, 'tbCbb_left', tbCbb.Left);
-//    SettingsFile.WriteInteger(Self.Name, 'tbCbb_top', tbCbb.Top);
+    SettingsFile.WriteBool(Self.Name,'DivString', ToolButton31.Down);
     Save(Self);
   end;
 end;
-//  tbDefaultLeft = 11;
-//
-//  tbCbbDefaultTop = 37;
-//  tbFontDefaultTop = 100;
-//  tbFontEditDefaultTop = 133;
-//  tbTextEditDefaultTop = 166;
-//  tbFileDefaultTop = 0;
-//  tbEditDefaultTop = 37;
 
 procedure TfrmSimpleEditor.FormCreate(Sender: TObject);
 var
@@ -461,8 +570,12 @@ begin
   FlowPanel1.AutoSize:= True;
   FlowPanel1.ShowCaption:= False;
   FlowPanel1.BevelOuter:= bvNone;
+  cbbFontFamily.Items:= Screen.Fonts;
+  cbbFontFamily.Style:= csDropDownList;
+  ToolBar4.Visible:= False;
 
   rEdt.Align:= alClient;
+  rEdt.HideSelection:= False;
 
   for i := 0 to Pred(Self.ControlCount) do
     if TControl(Self.Controls[i]).InheritsFrom(TToolBar) then
@@ -478,6 +591,13 @@ begin
         AlignWithMargins:= True;
       end;
     end;
+
+  ActUndo.Enabled:= False;
+  ActRedo.Enabled:= False;
+  ActPrint.Enabled:= False;
+  ActPgStp.Enabled:= False;
+  ActSearchText.Enabled:= False;
+  ActReplaceText.Enabled:= False;
 end;
 
 procedure TfrmSimpleEditor.FormShow(Sender: TObject);
@@ -485,10 +605,28 @@ begin
   with Settings do
   begin
     SenderObject:= sofrmSimpleEditor;
-//    tbCbb.Left:= SettingsFile.ReadInteger(Self.Name, 'tbCbb_left', tbDefaultLeft);
-//    tbCbb.Top:= SettingsFile.ReadInteger(Self.Name, 'tbCbb_top', tbCbbDefaultTop);
     Load(Self);
+    ToolButton31.Down:= SettingsFile.ReadBool(Self.Name,'DivString', False);
   end;
+
+  ActDivStringExecute(Sender);
+  rEdt.Modified:= True;
+end;
+
+function TfrmSimpleEditor.GetCurrCol: Integer;
+var
+  pt: TPoint;
+  CharIndex: Integer;
+begin
+  rEdt.Perform(EM_POSFROMCHAR,WPARAM(@pt), rEdt.selstart);
+  CharIndex := rEdt.Perform(EM_CHARFROMPOS, 0, Integer(@Pt));
+  Result:= CharIndex;
+end;
+
+procedure TfrmSimpleEditor.rEdtMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+//  if (Button = TMouseButton.mbLeft) then
+
 end;
 
 end.
