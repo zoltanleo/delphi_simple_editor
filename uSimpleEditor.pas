@@ -1,5 +1,5 @@
 ﻿unit uSimpleEditor;
-
+{https://docwiki.embarcadero.com/Libraries/Alexandria/en/Vcl.ComCtrls.TTextAttributes_Properties}
 interface
 
 uses
@@ -74,7 +74,6 @@ type
     ActFontChoice: TAction;
     ActFontColor: TAction;
     ActFontBackgrnd: TAction;
-    ActFontForegrnd: TAction;
     ActFontSizeInc: TAction;
     ActFontSizeDec: TAction;
     ActToUpperCase: TAction;
@@ -86,7 +85,7 @@ type
     actInsertBullets: TAction;
     ActInsertSymbol: TAction;
     ActChrSubScript: TAction;
-    ActChrSupraScript: TAction;
+    ActChrSuperScript: TAction;
     ActDivString: TAction;
     actAlignLeft: TAction;
     actAlignCenter: TAction;
@@ -192,7 +191,6 @@ type
     ToolButton45: TToolButton;
     ToolButton47: TToolButton;
     ToolButton46: TToolButton;
-    ToolButton48: TToolButton;
     ToolButton49: TToolButton;
     ToolButton50: TToolButton;
     ToolBar7: TToolBar;
@@ -202,6 +200,9 @@ type
     ToolButton54: TToolButton;
     ToolButton55: TToolButton;
     ToolButton33: TToolButton;
+    actClearFormat: TAction;
+    ToolButton48: TToolButton;
+    ToolButton56: TToolButton;
     procedure ActFileNewExecute(Sender: TObject);
     procedure ActToLowerCaseExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -219,7 +220,6 @@ type
     procedure ActReplaceTextExecute(Sender: TObject);
     procedure ActFontColorExecute(Sender: TObject);
     procedure ActFontBackgrndExecute(Sender: TObject);
-    procedure ActFontForegrndExecute(Sender: TObject);
     procedure ActFontSizeIncExecute(Sender: TObject);
     procedure ActFontSizeDecExecute(Sender: TObject);
     procedure ActToUpperCaseExecute(Sender: TObject);
@@ -230,7 +230,7 @@ type
     procedure actInsertBulletsExecute(Sender: TObject);
     procedure ActInsertSymbolExecute(Sender: TObject);
     procedure ActChrSubScriptExecute(Sender: TObject);
-    procedure ActChrSupraScriptExecute(Sender: TObject);
+    procedure ActChrSuperScriptExecute(Sender: TObject);
     procedure ActDivStringExecute(Sender: TObject);
     procedure actAlignLeftExecute(Sender: TObject);
     procedure actAlignCenterExecute(Sender: TObject);
@@ -243,10 +243,12 @@ type
     procedure ActFontChoiceExecute(Sender: TObject);
     procedure rEdtMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure cbbFontFamilyChange(Sender: TObject);
+    procedure actClearFormatExecute(Sender: TObject);
   {$ENDREGION}
   private
     { Private declarations }
     function GetCurrCol: Integer;
+    procedure SetLineSpacing(ARichEdit: TRichEdit; lineSpacing: Byte);
   public
     { Public declarations }
   end;
@@ -260,27 +262,36 @@ implementation
 
 procedure TfrmSimpleEditor.actAlignCenterExecute(Sender: TObject);
 begin
-//
+  rEdt.Paragraph.Alignment:= taCenter;
 end;
 
 procedure TfrmSimpleEditor.actAlignLeftExecute(Sender: TObject);
 begin
-//
+  rEdt.Paragraph.Alignment:= taLeftJustify;
 end;
 
 procedure TfrmSimpleEditor.actAlignRightExecute(Sender: TObject);
 begin
-//
+  rEdt.Paragraph.Alignment:= taRightJustify;
 end;
 
 procedure TfrmSimpleEditor.ActChrSubScriptExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelAttributes.Subscript:= sstSubscript;
 end;
 
-procedure TfrmSimpleEditor.ActChrSupraScriptExecute(Sender: TObject);
+procedure TfrmSimpleEditor.ActChrSuperScriptExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelAttributes.Subscript:= sstSuperscript;
+end;
+
+procedure TfrmSimpleEditor.actClearFormatExecute(Sender: TObject);
+begin
+  if (rEdt.SelLength = 0) then Exit;
+
+  rEdt.SelAttributes:= rEdt.DefAttributes;
 end;
 
 procedure TfrmSimpleEditor.ActCloseFileWOSaveExecute(Sender: TObject);
@@ -305,15 +316,9 @@ end;
 
 procedure TfrmSimpleEditor.ActDivStringExecute(Sender: TObject);
 begin
-//  if ToolButton31.Down
-//    then ToolButton31.Down:= False
-//    else ToolButton31.Down:= True;
-
   if ToolButton31.Down
     then rEdt.ScrollBars:= TScrollStyle.ssVertical
     else rEdt.ScrollBars:= TScrollStyle.ssBoth;
-
-//  ToolButton31.Down:= not ToolButton31.Down;
 end;
 
 procedure TfrmSimpleEditor.ActFileNewExecute(Sender: TObject);
@@ -380,7 +385,11 @@ end;
 
 procedure TfrmSimpleEditor.actFontBoldExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+//     ?
+//     https://docwiki.embarcadero.com/Libraries/Alexandria/en/Vcl.ComCtrls.TTextAttributes.ConsistentAttributes
+//  rEdt.SelAttributes.Bold:= not (caBold in rEdt.SelAttributes.ConsistentAttributes);
+  rEdt.SelAttributes.Bold:= True;
 end;
 
 procedure TfrmSimpleEditor.ActFontChoiceExecute(Sender: TObject);
@@ -419,59 +428,62 @@ begin
   end;
 end;
 
-procedure TfrmSimpleEditor.ActFontForegrndExecute(Sender: TObject);
-begin
-//
-end;
-
 procedure TfrmSimpleEditor.actFontItalicExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelAttributes.Italic:= True;
 end;
 
 procedure TfrmSimpleEditor.ActFontSizeDecExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  if (rEdt.SelAttributes.Size < 5) then Exit;
+  rEdt.SelAttributes.Size := rEdt.SelAttributes.Size - 1;
 end;
 
 procedure TfrmSimpleEditor.ActFontSizeIncExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  if (rEdt.SelAttributes.Size > 76) then Exit;
+  rEdt.SelAttributes.Size := rEdt.SelAttributes.Size + 1;
 end;
 
 procedure TfrmSimpleEditor.actFontStrikeOutExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelAttributes.Strikeout:= True;
 end;
 
 procedure TfrmSimpleEditor.actFontUnderlineExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelAttributes.Underline:= True;
 end;
 
 procedure TfrmSimpleEditor.actInsertBulletsExecute(Sender: TObject);
 begin
-//
+  rEdt.Paragraph.Numbering:= nsBullet;
 end;
 
 procedure TfrmSimpleEditor.ActInsertSymbolExecute(Sender: TObject);
 begin
-//
+  WinExec('charmap', SW_RESTORE);
+  if rEdt.CanFocus then rEdt.SetFocus;
 end;
 
 procedure TfrmSimpleEditor.actLineSpacing_1Execute(Sender: TObject);
 begin
-//
+  SetLineSpacing(rEdt, 3);
 end;
 
 procedure TfrmSimpleEditor.actLineSpacing_2Execute(Sender: TObject);
 begin
-//
+  SetLineSpacing(rEdt, 1);
 end;
 
 procedure TfrmSimpleEditor.actLineSpacing_3Execute(Sender: TObject);
 begin
-//
+  SetLineSpacing(rEdt, 2);
 end;
 
 procedure TfrmSimpleEditor.ActPasteToClipbrdExecute(Sender: TObject);
@@ -538,12 +550,14 @@ end;
 
 procedure TfrmSimpleEditor.ActToLowerCaseExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelText := LowerCase(rEdt.SelText, loUserLocale);
 end;
 
 procedure TfrmSimpleEditor.ActToUpperCaseExecute(Sender: TObject);
 begin
-//
+  if (rEdt.SelLength = 0) then Exit;
+  rEdt.SelText := UpperCase(rEdt.SelText, loUserLocale);
 end;
 
 procedure TfrmSimpleEditor.cbbFontFamilyChange(Sender: TObject);
@@ -629,4 +643,16 @@ begin
 
 end;
 
+procedure TfrmSimpleEditor.SetLineSpacing(ARichEdit: TRichEdit; lineSpacing: Byte);
+var
+  pf2: ParaFormat2;
+begin
+  FillChar(pf2, SizeOf(pf2), 0);
+  pf2.cbSize := SizeOf(PARAFORMAT2);
+  pf2.dwMask := PFM_LINESPACING;
+  pf2.bLineSpacingRule := lineSpacing;
+  SendMessage(ARichEdit.Handle, EM_SETPARAFORMAT, 0, Longint(@pf2));
+end;
+
 end.
+

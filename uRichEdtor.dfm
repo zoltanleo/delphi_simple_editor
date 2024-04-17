@@ -104,7 +104,7 @@ object FrmSimpleEditor: TFrmSimpleEditor
       Left = 0
       Top = 0
       Width = 692
-      Height = 24
+      Height = 26
       Align = alTop
       AutoSize = True
       BevelOuter = bvNone
@@ -114,7 +114,7 @@ object FrmSimpleEditor: TFrmSimpleEditor
         Left = 0
         Top = 0
         Width = 692
-        Height = 24
+        Height = 26
         ActionManager = ActManager
         Align = alBottom
         Caption = 'ActionToolBar1'
@@ -134,9 +134,9 @@ object FrmSimpleEditor: TFrmSimpleEditor
     end
     object PnlToolBarCbBox: TPanel
       Left = 0
-      Top = 24
+      Top = 26
       Width = 223
-      Height = 34
+      Height = 32
       Align = alLeft
       BevelOuter = bvNone
       Caption = 'PnlToolBarCbBox'
@@ -185,9 +185,9 @@ object FrmSimpleEditor: TFrmSimpleEditor
     end
     object PnlToolBarFont: TPanel
       Left = 223
-      Top = 24
+      Top = 26
       Width = 469
-      Height = 34
+      Height = 32
       Align = alClient
       AutoSize = True
       BevelOuter = bvNone
@@ -197,7 +197,7 @@ object FrmSimpleEditor: TFrmSimpleEditor
         Left = 0
         Top = 0
         Width = 469
-        Height = 24
+        Height = 26
         ActionManager = ActManager
         Caption = 'ActionToolBar2'
         Color = clMenuBar

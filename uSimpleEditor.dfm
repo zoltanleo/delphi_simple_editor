@@ -56,6 +56,8 @@ object frmSimpleEditor: TfrmSimpleEditor
     Height = 65
     Align = alTop
     Caption = 'FlowPanel1'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     ExplicitWidth = 835
     object tbFile: TToolBar
@@ -377,7 +379,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Margins.Top = 2
         Margins.Right = 2
         Margins.Bottom = 2
-        Action = ActChrSupraScript
+        Action = ActChrSuperScript
       end
       object ToolButton30: TToolButton
         Left = 121
@@ -489,7 +491,7 @@ object frmSimpleEditor: TfrmSimpleEditor
     object ToolBar5: TToolBar
       Left = 304
       Top = 25
-      Width = 176
+      Width = 204
       Height = 29
       Caption = 'ToolBar5'
       Images = PngImgListActMng
@@ -581,11 +583,24 @@ object frmSimpleEditor: TfrmSimpleEditor
         ImageIndex = 19
         Style = tbsSeparator
       end
+      object ToolButton48: TToolButton
+        Left = 172
+        Top = 0
+        Action = actClearFormat
+      end
+      object ToolButton56: TToolButton
+        Left = 195
+        Top = 0
+        Width = 8
+        Caption = 'ToolButton56'
+        ImageIndex = 93
+        Style = tbsSeparator
+      end
     end
     object ToolBar6: TToolBar
-      Left = 480
+      Left = 508
       Top = 25
-      Width = 108
+      Width = 87
       Height = 29
       Caption = 'ToolBar6'
       Images = PngImgListActMng
@@ -620,7 +635,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Margins.Bottom = 2
         Action = ActFontColor
       end
-      object ToolButton48: TToolButton
+      object ToolButton49: TToolButton
         Left = 53
         Top = 0
         Margins.Left = 2
@@ -629,17 +644,8 @@ object frmSimpleEditor: TfrmSimpleEditor
         Margins.Bottom = 2
         Action = ActFontBackgrnd
       end
-      object ToolButton49: TToolButton
-        Left = 76
-        Top = 0
-        Margins.Left = 2
-        Margins.Top = 2
-        Margins.Right = 2
-        Margins.Bottom = 2
-        Action = ActFontForegrnd
-      end
       object ToolButton50: TToolButton
-        Left = 99
+        Left = 76
         Top = 0
         Width = 7
         Margins.Left = 2
@@ -652,7 +658,7 @@ object frmSimpleEditor: TfrmSimpleEditor
       end
     end
     object ToolBar7: TToolBar
-      Left = 588
+      Left = 595
       Top = 25
       Width = 102
       Height = 29
@@ -1682,6 +1688,24 @@ object frmSimpleEditor: TfrmSimpleEditor
           610000003E4944415478DA636460A867A004308E1A806AC07F86C6FF08897A46
           920C006946D684CEC76B00CC667403905D83AC06994D1D1750250CA8120BA306
           900700DCC2260142E9CB8F0000000049454E44AE426082}
+      end
+      item
+        Background = clWindow
+        Name = 'clear-format (1)'
+        PngImage.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000000473424954080808087C086488000000097048597300000076000000
+          76014E7B26080000001974455874536F667477617265007777772E696E6B7363
+          6170652E6F72679BEE3C1A000001074944415478DACDD33F4B425118C7F1E742
+          28A26EEAEA2BE805E8625B20483AD5E052830D7AA13568AE2908DC5A5D121269
+          C8B94150F01534B8042D36690A61FEE97BB847B91CBC7ADD7AE003F75E787EE7
+          DCF3C7129133541193FDEA0BB6A51F72E8228C8047C3100BD77B0A2F2A60094B
+          9BE04707FD22846F04718D0723746906A8A603D4D1C02D8E718131EEB605ACA6
+          D5D91030D33E7705ACCA0CE87BACCB3F0D28A3827764F0847BCCF51A4C77059C
+          23618CF48147B451D05BBDF517DC758457B4F44E44C43978BE0292E8A1841B71
+          8EBB9A45D16F401E57C8E21923DD3CF31B10C51B0E51C3A5AB791D30C0893827
+          D0ABD4DD9818DFD268AA805371AE735CF62B35B0FD071D585585B0C4B0E10000
+          000049454E44AE426082}
       end>
     Left = 72
     Top = 280
@@ -1811,15 +1835,8 @@ object frmSimpleEditor: TfrmSimpleEditor
       Category = 'Font'
       Caption = #1060#1086#1085' '#1096#1088#1080#1092#1090#1072
       Hint = #1042#1099#1073#1088#1072#1090#1100' '#1092#1086#1085' '#1089#1090#1088#1086#1082#1080
-      ImageIndex = 27
-      OnExecute = ActFontBackgrndExecute
-    end
-    object ActFontForegrnd: TAction
-      Category = 'Font'
-      Caption = #1055#1086#1076#1089#1074#1077#1090#1082#1072' '#1096#1088#1080#1092#1090#1072
-      Hint = #1052#1072#1088#1082#1080#1088#1086#1074#1072#1090#1100' '#1074#1099#1076#1077#1083#1077#1085#1085#1099#1081' '#1090#1077#1082#1089#1090
       ImageIndex = 25
-      OnExecute = ActFontForegrndExecute
+      OnExecute = ActFontBackgrndExecute
     end
     object ActFontSizeInc: TAction
       Category = 'Font'
@@ -1898,12 +1915,12 @@ object frmSimpleEditor: TfrmSimpleEditor
       ImageIndex = 78
       OnExecute = ActChrSubScriptExecute
     end
-    object ActChrSupraScript: TAction
+    object ActChrSuperScript: TAction
       Category = 'Format'
       Caption = #1042#1077#1088#1093#1085#1080#1081' '#1088#1077#1075#1080#1089#1090#1088
       Hint = #1055#1077#1088#1077#1074#1086#1076' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1075#1086' '#1090#1077#1082#1089#1090#1072' '#1074' '#1074#1077#1088#1093#1085#1080#1081' ('#1085#1072#1076#1089#1090#1088#1086#1095#1085#1099#1081') '#1088#1077#1075#1080#1089#1090#1088
       ImageIndex = 79
-      OnExecute = ActChrSupraScriptExecute
+      OnExecute = ActChrSuperScriptExecute
     end
     object ActDivString: TAction
       Category = 'Format'
@@ -1936,20 +1953,30 @@ object frmSimpleEditor: TfrmSimpleEditor
     object actLineSpacing_1: TAction
       Category = 'Format'
       Caption = #1054#1076#1080#1085#1072#1088#1085#1099#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
+      Hint = #1054#1076#1080#1085#1072#1088#1085#1099#1081' '#1084#1077#1078#1089#1090#1088#1086#1095#1085#1099#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
       ImageIndex = 64
       OnExecute = actLineSpacing_1Execute
     end
     object actLineSpacing_2: TAction
       Category = 'Format'
       Caption = #1044#1074#1086#1081#1085#1086#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
+      Hint = #1044#1074#1086#1081#1085#1086#1081' '#1084#1077#1078#1089#1090#1088#1086#1095#1085#1099#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
       ImageIndex = 65
       OnExecute = actLineSpacing_2Execute
     end
     object actLineSpacing_3: TAction
       Category = 'Format'
       Caption = #1058#1088#1086#1081#1085#1086#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
+      Hint = #1058#1088#1086#1081#1085#1086#1081' '#1084#1077#1078#1089#1090#1088#1086#1095#1085#1099#1081' '#1080#1085#1090#1077#1088#1074#1072#1083
       ImageIndex = 66
       OnExecute = actLineSpacing_3Execute
+    end
+    object actClearFormat: TAction
+      Category = 'Format'
+      Caption = 'actClearFormat'
+      Hint = #1042#1077#1088#1085#1091#1090#1100' '#1074#1099#1076#1077#1083#1077#1085#1085#1086#1084#1091' '#1090#1077#1082#1089#1090#1091' '#1089#1090#1080#1083#1100' '#13#10#1092#1086#1088#1084#1072#1090#1080#1088#1086#1074#1072#1085#1080#1103' '#1087#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
+      ImageIndex = 92
+      OnExecute = actClearFormatExecute
     end
   end
   object mnuMain: TMainMenu
@@ -2032,7 +2059,9 @@ object frmSimpleEditor: TfrmSimpleEditor
         Action = ActFontBackgrnd
       end
       object N25: TMenuItem
-        Action = ActFontForegrnd
+        Caption = #1055#1086#1076#1089#1074#1077#1090#1082#1072' '#1096#1088#1080#1092#1090#1072
+        Hint = #1052#1072#1088#1082#1080#1088#1086#1074#1072#1090#1100' '#1074#1099#1076#1077#1083#1077#1085#1085#1099#1081' '#1090#1077#1082#1089#1090
+        ImageIndex = 25
       end
       object N26: TMenuItem
         Caption = '-'
@@ -2096,7 +2125,7 @@ object frmSimpleEditor: TfrmSimpleEditor
         Action = ActChrSubScript
       end
       object N46: TMenuItem
-        Action = ActChrSupraScript
+        Action = ActChrSuperScript
       end
       object N47: TMenuItem
         Caption = '-'

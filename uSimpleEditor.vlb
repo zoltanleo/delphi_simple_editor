@@ -139,9 +139,6 @@ Coordinates=56,333,40,36
 [N39]
 Coordinates=619,331,40,36
 
-[ActFontForegrnd]
-Coordinates=619,386,111,36
-
 [ActFileOpen]
 Coordinates=530,369,85,36
 
@@ -186,9 +183,6 @@ Coordinates=785,56,90,36
 
 [N36]
 Coordinates=276,443,40,36
-
-[ActChrSupraScript]
-Coordinates=785,111,121,36
 
 [N1]
 Coordinates=227,443,40,36
@@ -305,9 +299,12 @@ Coordinates=961,166,60,36
 Coordinates=961,221,111,36
 
 []
-Coordinates=152,10,103,36
+Coordinates=619,386,111,36
 Visible=True
 
 [rEdt]
 Coordinates=98,10,44,36
+
+[ActChrSuperScript]
+Coordinates=785,111,121,36
 
